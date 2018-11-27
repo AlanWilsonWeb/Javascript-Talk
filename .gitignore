@@ -5,6 +5,7 @@
 mongoose/node_modules/
 sequelize/node_modules/
 sqlite3/node_modules/
+basic-server/node_modules/
 
 # testing
 /coverage
