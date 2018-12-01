@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const db = mongoose.connection;
 const app = express();
+const Item = require('./models/Item');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -35,6 +36,21 @@ app.get('/test', (req, res) => {
         {id:4, name: "test"}
     ]);
 });
+
+app.get('/item', (req, res) => {
+    Item.find({}, null, {},function(err, items){
+        res.json(items);
+    });
+})
+
+app.post('/item', (req, res) => {
+    Item.create({
+      name : req.body.name,
+      description: req.body.description,
+      price: req.body.price
+    });
+    res.end();
+  });
 
 app.listen(app.get("port"), () => {
     console.log(
