@@ -1,13 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const db = mongoose.connection;
 const app = express();
 const Item = require('./models/Item');
 
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(morgan('dev'))
