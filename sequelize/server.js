@@ -71,6 +71,12 @@ app.post('/item', (req, res) => {
     );
 })
 
+app.post('/item2', (req, res) => {
+    sequelize.query(`INSERT INTO Items (Name, Description, Price)
+    VALUES( '${req.body.name}', '${req.body.description}', '${req.body.price};')`)
+    .then(res.send('Successfully added to Database!'))
+})
+
 app.listen(app.get("port"), () => {
     console.log(
       "Express started on http://localhost:" +
